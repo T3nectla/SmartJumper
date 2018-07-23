@@ -32,6 +32,7 @@ public class GameManager {
 		entityManager.spawnEnemy();
 		
 		viewManager.addViews(entityManager.getViews());
+		viewManager.addView(entityManager.getScoreView());
 		viewManager.addView(tileManager.getGroundTileView());
 		
 		

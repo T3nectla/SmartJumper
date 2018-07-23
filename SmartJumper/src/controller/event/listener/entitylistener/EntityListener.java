@@ -15,6 +15,7 @@ import model.entity.Entity;
 import model.event.event.entityevent.collisionevent.CollisionEvent;
 import model.event.event.entityevent.groundevent.GroundEvent;
 import model.event.event.entityevent.movementevent.MovementEvent;
+import model.event.event.playerevent.scoreevent.ScoreEvent;
 import model.tile.GroundTile;
 
 public class EntityListener {
@@ -36,6 +37,7 @@ public class EntityListener {
 				SmartJumperEventBus.getInstance().post(new CollisionEvent(e.getEntity(), collidableObject));
 			}
 			if(collisionManager.checkOutOfBounds(e.getEntity())) {
+				SmartJumperEventBus.getInstance().post(new ScoreEvent(EntityManager.getInstance().getPlayer()));
 				GameManager.getInstance().nextEnemy();
 			}
 		}

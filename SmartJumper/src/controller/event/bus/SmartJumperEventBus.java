@@ -3,6 +3,7 @@ package controller.event.bus;
 import com.google.common.eventbus.EventBus;
 
 import controller.event.listener.entitylistener.EntityListener;
+import controller.event.listener.playerlistener.PlayerListener;
 
 public class SmartJumperEventBus extends EventBus {
 	
@@ -14,5 +15,6 @@ public class SmartJumperEventBus extends EventBus {
 	
 	static {
 		smartJumperEventBus.register(new EntityListener());
+		smartJumperEventBus.register(new PlayerListener());
 	}
 }

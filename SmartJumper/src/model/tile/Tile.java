@@ -1,7 +1,7 @@
 package model.tile;
 
 import javafx.geometry.Point2D;
-import model.bounds.Bound;
+import model.bound.Bound;
 import model.collision.Collidable;
 import model.collision.CollisionBound;
 

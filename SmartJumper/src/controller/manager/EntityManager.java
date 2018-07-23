@@ -9,6 +9,7 @@ import model.entity.enemy.Enemy;
 import model.entity.enemy.GroundEnemy;
 import model.entity.player.Player;
 import model.view.View;
+import view.score.ScoreView;
 import view.viewableobject.ViewableObjectView;
 
 public class EntityManager {
@@ -17,6 +18,7 @@ public class EntityManager {
 	private Enemy enemy;
 	
 	private View playerView;
+	private View scoreView;
 	private View enemyView;
 	
 	private List<Entity> entities = new ArrayList<>();
@@ -31,6 +33,7 @@ public class EntityManager {
 	public void spawnPlayer() {
 		entities.remove(player);
 		views.remove(playerView);
+		views.remove(scoreView);
 		
 		player = new Player(
 			50,
@@ -39,9 +42,11 @@ public class EntityManager {
 			50
 		);
 		playerView = new ViewableObjectView(player,  Color.BLACK);
+		scoreView = new ScoreView(player);
 		
 		entities.add(player);
 		views.add(playerView);
+		views.add(scoreView);
 	}
 	
 	public void spawnEnemy() {
@@ -75,6 +80,9 @@ public class EntityManager {
 	
 	public View getPlayerView() {
 		return playerView;
+	}
+	public View getScoreView() {
+		return scoreView;
 	}
 	public View getEnemyView() {
 		return enemyView;

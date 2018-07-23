@@ -2,7 +2,7 @@ package model.entity;
 
 import controller.event.bus.SmartJumperEventBus;
 import javafx.geometry.Point2D;
-import model.bounds.Bound;
+import model.bound.Bound;
 import model.collision.CollisionBound;
 import model.constants.Constants;
 import model.event.event.entityevent.movementevent.MovementEvent;

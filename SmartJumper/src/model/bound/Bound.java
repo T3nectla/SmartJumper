@@ -1,4 +1,4 @@
-package model.bounds;
+package model.bound;
 
 public class Bound {
 

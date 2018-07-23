@@ -1,16 +1,19 @@
 package model.view;
 
+import controller.manager.SceneManager;
+import javafx.scene.canvas.GraphicsContext;
+
 public abstract class View {
 
-	private Viewable viewableObject;
+	private GraphicsContext gc;
 	
-	public View(Viewable viewableObject) {
-		this.viewableObject = viewableObject;
+	public View() {
+		gc = SceneManager.getInstance().getCanvas().getGraphicsContext2D();
 	}
 	
 	public abstract void show();
 	
-	public Viewable getViewableObject() {
-		return viewableObject;
+	public GraphicsContext getGC() {
+		return gc;
 	}
 }

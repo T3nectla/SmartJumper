@@ -5,8 +5,11 @@ import model.entity.Entity;
 
 public class Player extends Entity {
 	
+	private long score;
+	
 	public Player(double posX, double posY, double boundX, double boundY) {
 		super(posX, posY, boundX, boundY);
+		score = 0;
 		setVel(0, Constants.JUMP);
 	}
 	
@@ -32,5 +35,13 @@ public class Player extends Entity {
 	
 	public void cancelJump() {
 		setJumpPressed(false);
+	}
+	
+	public void setScore(long score) {
+		this.score = score;
+	}
+	
+	public long getScore() {
+		return score;
 	}
 }
