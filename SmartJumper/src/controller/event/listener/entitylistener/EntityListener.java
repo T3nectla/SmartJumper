@@ -12,7 +12,7 @@ import controller.manager.GameManager;
 import controller.manager.TileManager;
 import model.collision.Collidable;
 import model.entity.Entity;
-import model.event.event.entityevent.CollisionEvent;
+import model.event.event.entityevent.collisionevent.CollisionEvent;
 import model.event.event.entityevent.groundevent.GroundEvent;
 import model.event.event.entityevent.movementevent.MovementEvent;
 import model.tile.GroundTile;

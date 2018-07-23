@@ -12,7 +12,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Tuncer/Desktop/Desktop/Java/EclipseProjects/SmartJumper/lib/Guava.jar">
+	<classpathentry kind="lib" path="lib/Guava.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

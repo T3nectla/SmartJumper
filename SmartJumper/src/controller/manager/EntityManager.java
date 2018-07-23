@@ -5,9 +5,9 @@ import java.util.List;
 
 import javafx.scene.paint.Color;
 import model.entity.Entity;
-import model.entity.Player;
 import model.entity.enemy.Enemy;
 import model.entity.enemy.GroundEnemy;
+import model.entity.player.Player;
 import model.view.View;
 import view.viewableobject.ViewableObjectView;
 

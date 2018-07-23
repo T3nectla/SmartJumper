@@ -21,7 +21,7 @@ public class FXLoader {
 		try {
 			loadedRoot = FXMLLoader.load(FXLoader.class.getResource(url));
 		} catch (NullPointerException | IOException ex) {
-			Logger.getAnonymousLogger().severe("Root could not be loaded!");
+			Logger.getAnonymousLogger().severe("Root could not be loaded! Message:\n" + ex.getMessage());
 			Platform.exit();
 		}
 		

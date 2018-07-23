@@ -2,7 +2,7 @@ package test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import model.entity.Player;
+import model.entity.player.Player;
 
 public class PlayerTest {
 
@@ -13,8 +13,8 @@ public class PlayerTest {
 		Assertions.assertEquals(63.2d, player.getPos().getY(), "y position failed!");
 		Assertions.assertEquals(0d, player.getVel().getX(), "x velocity failed!");
 		Assertions.assertEquals(-1d, player.getVel().getY(), "y velocity failed!");
-		Assertions.assertEquals(44.3d, player.getBound().getWidth(), "width boundarie failed!");
-		Assertions.assertEquals(89.47d, player.getBound().getHeight(), "height boundarie failed!");
+		Assertions.assertEquals(44.3d, player.getBound().getWidth(), "width boundary failed!");
+		Assertions.assertEquals(89.47d, player.getBound().getHeight(), "height boundary failed!");
 	}
 	
 	@Test

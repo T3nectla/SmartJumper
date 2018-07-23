@@ -1,7 +1,8 @@
-package model.event.event.entityevent;
+package model.event.event.entityevent.collisionevent;
 
 import model.collision.Collidable;
 import model.entity.Entity;
+import model.event.event.entityevent.EntityEvent;
 
 public class CollisionEvent extends EntityEvent {
 	

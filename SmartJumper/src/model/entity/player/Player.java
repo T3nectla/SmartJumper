@@ -1,6 +1,7 @@
-package model.entity;
+package model.entity.player;
 
 import model.constants.Constants;
+import model.entity.Entity;
 
 public class Player extends Entity {
 	
