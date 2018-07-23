@@ -9,15 +9,15 @@ public class CollisionBound {
 	}
 	
 	public double getTopBound() {
-		return collidableObject.getPos().getY()-(collidableObject.getBound().getHeight()/2);
+		return (collidableObject.getPos().getY()-(collidableObject.getBound().getHeight()/2))+.1d;
 	}
 	public double getBottomBound() {
-		return collidableObject.getPos().getY()+(collidableObject.getBound().getHeight()/2);
+		return (collidableObject.getPos().getY()+(collidableObject.getBound().getHeight()/2))-.1d;
 	}
 	public double getLeftBound() {
-		return collidableObject.getPos().getX()-(collidableObject.getBound().getWidth()/2);
+		return (collidableObject.getPos().getX()-(collidableObject.getBound().getWidth()/2))+.1d;
 	}
 	public double getRightBound() {
-		return collidableObject.getPos().getX()+(collidableObject.getBound().getWidth()/2);
+		return (collidableObject.getPos().getX()+(collidableObject.getBound().getWidth()/2))-.1d;
 	}
 }

@@ -22,6 +22,7 @@ public class Program {
 		sceneManager.initialize(Roots.MENU);
 		primaryStage.setScene(sceneManager.getScene());
 		primaryStage.setTitle(Titles.MENU);
+		primaryStage.setResizable(false);
 		primaryStage.show();
 		
 		sceneManager.setStage(primaryStage);
