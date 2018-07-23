@@ -1,4 +1,4 @@
-package model.event.event.entityevent;
+package model.event.entityevent;
 
 import model.entity.Entity;
 

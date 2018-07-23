@@ -4,7 +4,7 @@ import com.google.common.eventbus.Subscribe;
 
 import controller.manager.EntityManager;
 import model.entity.enemy.Enemy;
-import model.event.event.playerevent.scoreevent.ScoreEvent;
+import model.event.playerevent.scoreevent.ScoreEvent;
 
 public class PlayerListener {
 	

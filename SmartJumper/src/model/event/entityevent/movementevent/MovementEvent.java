@@ -1,7 +1,7 @@
-package model.event.event.entityevent.movementevent;
+package model.event.entityevent.movementevent;
 
 import model.entity.Entity;
-import model.event.event.entityevent.EntityEvent;
+import model.event.entityevent.EntityEvent;
 
 public class MovementEvent extends EntityEvent {
 

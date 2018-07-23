@@ -5,7 +5,7 @@ import javafx.geometry.Point2D;
 import model.bound.Bound;
 import model.collision.CollisionBound;
 import model.constants.Constants;
-import model.event.event.entityevent.movementevent.MovementEvent;
+import model.event.entityevent.movementevent.MovementEvent;
 import model.move.Movable;
 
 public abstract class Entity implements Movable {

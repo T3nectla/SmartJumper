@@ -1,7 +1,7 @@
-package model.event.event.playerevent.scoreevent;
+package model.event.playerevent.scoreevent;
 
 import model.entity.player.Player;
-import model.event.event.playerevent.PlayerEvent;
+import model.event.playerevent.PlayerEvent;
 
 public class ScoreEvent extends PlayerEvent {
 	
