@@ -13,10 +13,10 @@ public class CollisionManager {
 	
 	public boolean checkCollision(Collidable collidableObject1, Collidable collidableObject2) {
 		return
-			collidableObject1.getCollisionBound().getBottomBound() >= collidableObject2.getCollisionBound().getTopBound() &&
-			collidableObject1.getCollisionBound().getRightBound() >= collidableObject2.getCollisionBound().getLeftBound() &&
-			collidableObject1.getCollisionBound().getTopBound() <= collidableObject2.getCollisionBound().getBottomBound() &&
-			collidableObject1.getCollisionBound().getLeftBound() <= collidableObject2.getCollisionBound().getRightBound();
+			collidableObject1.getCollisionBound().getBottomBound() > collidableObject2.getCollisionBound().getTopBound() &&
+			collidableObject1.getCollisionBound().getRightBound() > collidableObject2.getCollisionBound().getLeftBound() &&
+			collidableObject1.getCollisionBound().getTopBound() < collidableObject2.getCollisionBound().getBottomBound() &&
+			collidableObject1.getCollisionBound().getLeftBound() < collidableObject2.getCollisionBound().getRightBound();
 	}
 	
 	public boolean checkOutOfBounds(Movable movableObject) {

@@ -3,6 +3,7 @@ package controller.manager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.scene.paint.Color;
 import model.entity.Entity;
@@ -89,9 +90,10 @@ public class EntityManager {
 	}
 	
 	private void spawnFlyEnemy() {
+		int rndHeight = ThreadLocalRandom.current().nextInt(25, 200);
 		enemy = new FlyEnemy(
 			SceneManager.getInstance().getCanvas().getWidth(),
-			TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound()-100,
+			TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound() - rndHeight,
 			50,
 			50
 		);

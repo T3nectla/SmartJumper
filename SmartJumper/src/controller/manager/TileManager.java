@@ -19,7 +19,7 @@ public class TileManager {
 	public void spawnTile() {
 		Canvas gameCanvas = SceneManager.getInstance().getCanvas();
 		
-		groundTile = new GroundTile(gameCanvas.getWidth()/2, gameCanvas.getHeight(), gameCanvas.getWidth(), 200);
+		groundTile = new GroundTile(gameCanvas.getWidth()/2, gameCanvas.getHeight()*.9, gameCanvas.getWidth(), 100);
 		groundTileView = new ViewableObjectView(groundTile, Color.BROWN);
 	}
 	

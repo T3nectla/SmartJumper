@@ -1,7 +1,5 @@
 package controller.controller;
 
-import java.util.Random;
-
 import controller.manager.GameManager;
 import controller.manager.SceneManager;
 import javafx.application.Platform;

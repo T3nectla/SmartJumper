@@ -28,7 +28,7 @@ public abstract class Enemy extends Entity {
 	}
 	
 	private void calcVel() {
-		setVel(ThreadLocalRandom.current().nextInt(-15, -2), 0);
+		setVel(-ThreadLocalRandom.current().nextInt(5, 20), 0);
 		calcScore();
 	}
 	
