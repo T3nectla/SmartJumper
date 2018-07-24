@@ -2,10 +2,13 @@ package controller.manager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javafx.scene.paint.Color;
 import model.entity.Entity;
 import model.entity.enemy.Enemy;
+import model.entity.enemy.EnemyType;
+import model.entity.enemy.FlyEnemy;
 import model.entity.enemy.GroundEnemy;
 import model.entity.player.Player;
 import model.view.View;
@@ -53,22 +56,45 @@ public class EntityManager {
 		entities.remove(enemy);
 		views.remove(enemyView);
 		
-		enemy = new GroundEnemy(
-			SceneManager.getInstance().getCanvas().getWidth(),
-			TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound()-25,
-			50,
-			50
-		);
-//		enemy = new FlyEnemy(
-//			SceneManager.getInstance().getCanvas().getWidth(),
-//			TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound()-100,
-//			50,
-//			50
-//		);
+		chooseRndEnemy();
 		enemyView = new ViewableObjectView(enemy, Color.RED);
 		
 		entities.add(enemy);
 		views.add(enemyView);
+	}
+	
+	private void chooseRndEnemy() {
+		EnemyType[] enemyTypes = EnemyType.values();
+		int rnd = new Random().nextInt(enemyTypes.length);
+		
+		switch(enemyTypes[rnd]) {
+			case GROUNDENEMY:
+				spawnGroundEnemy();
+				break;
+			case FLYENEMY:
+				spawnFlyEnemy();
+				break;
+			default:
+				break;
+		}
+	}
+	
+	private void spawnGroundEnemy() {
+		enemy = new GroundEnemy(
+				SceneManager.getInstance().getCanvas().getWidth(),
+				TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound()-25,
+				50,
+				50
+			);
+	}
+	
+	private void spawnFlyEnemy() {
+		enemy = new FlyEnemy(
+			SceneManager.getInstance().getCanvas().getWidth(),
+			TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound()-100,
+			50,
+			50
+		);
 	}
 	
 	public Player getPlayer() {

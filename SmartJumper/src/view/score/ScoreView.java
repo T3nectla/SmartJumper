@@ -15,9 +15,10 @@ public class ScoreView extends View {
 	@Override
 	public void show() {
 		getGC().setFill(Color.GREEN);
+		String scoreStr = "Score: " + player.getScore();
 		getGC().fillText(
-			"Score: " + player.getScore(),
-			5,
+			scoreStr,
+			getGC().getCanvas().getWidth()-scoreStr.length()*10,
 			25
 		);
 	}
