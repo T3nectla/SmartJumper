@@ -20,7 +20,7 @@ public class TileManager {
 		Canvas gameCanvas = SceneManager.getInstance().getCanvas();
 		
 		groundTile = new GroundTile(gameCanvas.getWidth()/2, gameCanvas.getHeight()*.9, gameCanvas.getWidth(), 100);
-		groundTileView = new ViewableObjectView(groundTile, Color.BROWN);
+		groundTileView = new ViewableObjectView(groundTile, Color.BROWN.darker());
 	}
 	
 	public GroundTile getGroundTile() {

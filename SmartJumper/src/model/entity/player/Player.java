@@ -6,7 +6,6 @@ import model.entity.Entity;
 
 public class Player extends Entity {
 	
-	public static final double MAX_JUMP_DISTANCE = 200;
 	private long score;
 	private Point2D onGroundPos;
 	
@@ -22,7 +21,7 @@ public class Player extends Entity {
 		if(isJumpPressed()) {
 			setPos(getPos().add(getVel()));
 			
-			if(onGroundPos.distance(getPos()) >= MAX_JUMP_DISTANCE) {
+			if(onGroundPos.distance(getPos()) >= Constants.MAX_JUMP_DISTANCE) {
 				cancelJump();
 			}	
 			return;

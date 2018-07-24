@@ -28,17 +28,13 @@ public class EntityListener {
 		collidableObjects.add(TileManager.getInstance().getGroundTile());
 		
 		for(Collidable collidableObject : collidableObjects) {
-			if(e.getEntity() == collidableObject) {
-				continue;
-			}
-			
 			CollisionManager collisionManager = CollisionManager.getInstance();
 			if(collisionManager.checkCollision(e.getEntity(), collidableObject)) {
 				SmartJumperEventBus.getInstance().post(new CollisionEvent(e.getEntity(), collidableObject));
 			}
 			if(collisionManager.checkOutOfBounds(e.getEntity())) {
 				SmartJumperEventBus.getInstance().post(new ScoreEvent(EntityManager.getInstance().getPlayer()));
-				GameManager.getInstance().nextEnemy();
+				break;
 			}
 		}
 	}
