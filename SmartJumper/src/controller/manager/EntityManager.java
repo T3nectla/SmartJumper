@@ -6,9 +6,9 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.scene.paint.Color;
+import model.constants.EnemyType;
 import model.entity.Entity;
 import model.entity.enemy.Enemy;
-import model.entity.enemy.EnemyType;
 import model.entity.enemy.FlyEnemy;
 import model.entity.enemy.GroundEnemy;
 import model.entity.player.Player;

@@ -5,8 +5,11 @@ import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
 import javafx.util.Duration;
 import model.constants.Constants;
+import model.constants.GameState;
 import model.entity.Entity;
 import model.view.View;
+import view.helpline.HelpLineView;
+import view.stateview.NewStateTextView;
 
 public class GameManager {
 
@@ -20,7 +23,23 @@ public class GameManager {
 	}
 	
 	public void initialize() {
-		gameCanvas = SceneManager.getInstance().getCanvas();
+		SceneManager sceneManager = SceneManager.getInstance();
+		gameCanvas = sceneManager.getCanvas();
+		gameCanvas.setWidth(sceneManager.getScene().getWidth());
+		gameCanvas.setHeight(sceneManager.getScene().getHeight());
+		sceneManager.setCanvas(gameCanvas);
+		
+		GameStateManager.getInstance().initialize();
+		
+		if(gameTimeline == null) {
+			gameTimeline = new Timeline(new KeyFrame(Duration.millis(Constants.FPS), e-> draw()));
+			gameTimeline.setCycleCount(Timeline.INDEFINITE);
+		}
+		
+		sceneManager.getScene().getRoot().requestFocus();
+	}
+	
+	public void start() {
 		ViewManager viewManager = ViewManager.getInstance();
 		viewManager.clear();
 		
@@ -34,12 +53,9 @@ public class GameManager {
 		viewManager.addViews(entityManager.getViews());
 		viewManager.addView(entityManager.getScoreView());
 		viewManager.addView(tileManager.getGroundTileView());
+		viewManager.addView(new HelpLineView(entityManager.getPlayer()));
 		
-		
-		if(gameTimeline == null) {
-			gameTimeline = new Timeline(new KeyFrame(Duration.millis(Constants.FPS), e-> draw()));
-			gameTimeline.setCycleCount(Timeline.INDEFINITE);
-		}
+		play();
 	}
 	
 	public void nextEnemy() {
@@ -49,15 +65,22 @@ public class GameManager {
 		entityManager.spawnEnemy();
 		viewManager.addView(entityManager.getEnemyView());
 	}
+
 	
-	public void start() {
-		SceneManager.getInstance().getScene().getRoot().requestFocus();
-		
+	public void play() {
 		gameTimeline.play();
+		GameStateManager.getInstance().setCurrentGameState(GameState.RUNNING);
 	}
 	
-	public void stop() {
+	
+	public void pause() {
+		gameTimeline.pause();
+		GameStateManager.getInstance().setCurrentGameState(GameState.PAUSING);
+	}
+	
+	public void stop() {	
 		gameTimeline.stop();
+		GameStateManager.getInstance().setCurrentGameState(GameState.STOPPING);
 	}
 	
 	private void draw() {
@@ -70,6 +93,13 @@ public class GameManager {
 		
 		for(View view : ViewManager.getInstance().getViews()) {
 			view.show();
+		}
+		
+		GameStateManager.getInstance().setCurrentGameState(GameState.STARTING);
+		if(GameStateManager.getInstance().getCurrentGameState() == GameState.STARTING) {
+			new NewStateTextView().show();
+			play();
+			pause();
 		}
 	}
 }

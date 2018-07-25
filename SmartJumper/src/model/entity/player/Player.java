@@ -1,5 +1,6 @@
 package model.entity.player;
 
+import controller.manager.TileManager;
 import javafx.geometry.Point2D;
 import model.constants.Constants;
 import model.entity.Entity;
@@ -7,11 +8,11 @@ import model.entity.Entity;
 public class Player extends Entity {
 	
 	private long score;
-	private Point2D onGroundPos;
+	private Point2D groundPos;
 	
 	public Player(double posX, double posY, double boundX, double boundY) {
 		super(posX, posY, boundX, boundY);
-		onGroundPos = new Point2D(posX, posY);
+		groundPos = new Point2D(0, TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound());
 		score = 0;
 		setVel(0, Constants.JUMP);
 	}
@@ -21,7 +22,7 @@ public class Player extends Entity {
 		if(isJumpPressed()) {
 			setPos(getPos().add(getVel()));
 			
-			if(onGroundPos.distance(getPos()) >= Constants.MAX_JUMP_DISTANCE) {
+			if(groundPos.distance(getPos()) >= Constants.MAX_JUMP_DISTANCE) {
 				cancelJump();
 			}	
 			return;
@@ -50,5 +51,8 @@ public class Player extends Entity {
 	
 	public long getScore() {
 		return score;
+	}
+	public Point2D getGroundPos() {
+		return groundPos;
 	}
 }
