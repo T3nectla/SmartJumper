@@ -9,7 +9,7 @@ import model.constants.GameState;
 import model.entity.Entity;
 import model.view.View;
 import view.helpline.HelpLineView;
-import view.stateview.NewStateTextView;
+import view.stateview.StateTextView;
 
 public class GameManager {
 
@@ -75,6 +75,7 @@ public class GameManager {
 	
 	public void pause() {
 		gameTimeline.pause();
+		new StateTextView("Press P to unpause the game").show();
 		GameStateManager.getInstance().setCurrentGameState(GameState.PAUSING);
 	}
 	
@@ -95,9 +96,13 @@ public class GameManager {
 			view.show();
 		}
 		
-		GameStateManager.getInstance().setCurrentGameState(GameState.STARTING);
-		if(GameStateManager.getInstance().getCurrentGameState() == GameState.STARTING) {
-			new NewStateTextView().show();
+		GameStateManager gameStateManager = GameStateManager.getInstance();
+		if(gameStateManager.getCurrentGameState() == GameState.STOPPING) {
+			 new StateTextView("GAME OVER\nPress N to start a new game").show();
+		}
+		
+		gameStateManager.setCurrentGameState(GameState.STARTING);
+		if(gameStateManager.getCurrentGameState() == GameState.STARTING) {
 			play();
 			pause();
 		}

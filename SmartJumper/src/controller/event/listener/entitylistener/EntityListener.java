@@ -10,6 +10,7 @@ import controller.manager.CollisionManager;
 import controller.manager.EntityManager;
 import controller.manager.GameManager;
 import controller.manager.TileManager;
+import controller.manager.ViewManager;
 import model.collision.Collidable;
 import model.entity.Entity;
 import model.event.entityevent.collisionevent.CollisionEvent;
@@ -57,6 +58,7 @@ public class EntityListener {
 	 @Subscribe
 	 public void onCollision(CollisionEvent e) {
 		 if(e.getCollidableObject() instanceof Entity) {
+			 ViewManager.getInstance().removeViews(EntityManager.getInstance().getEntityViews());
 			 GameManager.getInstance().stop();
 			 return;
 		 }

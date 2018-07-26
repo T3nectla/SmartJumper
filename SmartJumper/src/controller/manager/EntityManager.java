@@ -26,6 +26,7 @@ public class EntityManager {
 	private View enemyView;
 	
 	private List<Entity> entities = new ArrayList<>();
+	private List<View> entityViews = new ArrayList<>();
 	private List<View> views = new ArrayList<>();
 	
 	private static final EntityManager entityManager = new EntityManager();
@@ -118,6 +119,11 @@ public class EntityManager {
 	
 	public List<Entity> getEntities() {
 		return entities;
+	}
+	public List<View> getEntityViews() {
+		entityViews = views;
+		entityViews.remove(scoreView);
+		return entityViews;
 	}
 	public List<View> getViews() {
 		return views;
