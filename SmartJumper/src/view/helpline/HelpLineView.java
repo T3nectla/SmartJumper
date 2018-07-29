@@ -1,11 +1,14 @@
 package view.helpline;
 
 import javafx.scene.paint.Color;
-import model.constants.Constants;
 import model.entity.player.Player;
 import model.view.View;
 
 public class HelpLineView extends View {
+	
+	public static final int POS_X_START = 0;
+	public static final Color COLOR = Color.GREEN;
+	
 	
 	private Player player; 
 	
@@ -15,10 +18,10 @@ public class HelpLineView extends View {
 	
 	@Override
 	public void show() {
-		getGC().setStroke(Color.GREEN);
-		double posY = player.getGroundPos().getY() - Constants.MAX_JUMP_DISTANCE - player.getBound().getHeight()/2;
+		getGC().setStroke(COLOR);
+		double posY = player.getGroundPos().getY() - Player.MAX_JUMP_DISTANCE - player.getBound().getHeight()/2;
 		getGC().strokeLine(
-			0,
+			POS_X_START,
 			posY,
 			getGC().getCanvas().getWidth(),
 			posY

@@ -2,8 +2,8 @@ package controller.launcher;
 
 import controller.manager.SceneManager;
 import javafx.stage.Stage;
-import model.constants.Roots;
-import model.constants.Titles;
+import model.constants.Root;
+import model.constants.Title;
 
 public class Program {
 	
@@ -19,9 +19,9 @@ public class Program {
 	
 	public void start(Stage primaryStage) {
 		SceneManager sceneManager = SceneManager.getInstance();
-		sceneManager.initialize(Roots.MENU);
+		sceneManager.initialize(Root.MENU);
 		primaryStage.setScene(sceneManager.getScene());
-		primaryStage.setTitle(Titles.MENU);
+		primaryStage.setTitle(Title.MENU);
 		primaryStage.setResizable(false);
 		primaryStage.show();
 		

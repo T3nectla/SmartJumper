@@ -3,7 +3,6 @@ package controller.manager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.scene.paint.Color;
 import model.constants.EnemyType;
@@ -18,6 +17,17 @@ import view.viewableobject.ViewableObjectView;
 
 public class EntityManager {
 
+	public static final double PLAYER_SIZE = 50d;
+	public static final double PLAYER_POS_X = 50d;
+	public static final double PLAYER_POS_Y = TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound()-PLAYER_SIZE/2;
+	public static final Color PLAYER_COLOR = Color.BLACK;
+	
+	public static final double ENEMY_SIZE = 50d;
+	public static final double ENEMY_POS_X = SceneManager.getInstance().getCanvas().getWidth();
+	public static final double ENEMY_POS_Y = TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound()-ENEMY_SIZE/2;
+	public static final Color ENEMY_COLOR = Color.RED;
+	
+	
 	private Player player;
 	private Enemy enemy;
 	
@@ -26,7 +36,6 @@ public class EntityManager {
 	private View enemyView;
 	
 	private List<Entity> entities = new ArrayList<>();
-	private List<View> entityViews = new ArrayList<>();
 	private List<View> views = new ArrayList<>();
 	
 	private static final EntityManager entityManager = new EntityManager();
@@ -41,12 +50,12 @@ public class EntityManager {
 		views.remove(scoreView);
 		
 		player = new Player(
-			50,
-			TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound()-25,
-			50,
-			50
+			PLAYER_POS_X,
+			PLAYER_POS_Y,
+			PLAYER_SIZE,
+			PLAYER_SIZE
 		);
-		playerView = new ViewableObjectView(player,  Color.BLACK);
+		playerView = new ViewableObjectView(player,  PLAYER_COLOR);
 		scoreView = new ScoreView(player);
 		
 		entities.add(player);
@@ -59,7 +68,7 @@ public class EntityManager {
 		views.remove(enemyView);
 		
 		chooseRndEnemy();
-		enemyView = new ViewableObjectView(enemy, Color.RED);
+		enemyView = new ViewableObjectView(enemy, ENEMY_COLOR);
 		
 		entities.add(enemy);
 		views.add(enemyView);
@@ -83,20 +92,20 @@ public class EntityManager {
 	
 	private void spawnGroundEnemy() {
 		enemy = new GroundEnemy(
-				SceneManager.getInstance().getCanvas().getWidth(),
-				TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound()-25,
-				50,
-				50
-			);
+			ENEMY_POS_X,
+			ENEMY_POS_Y,
+			ENEMY_SIZE,
+			ENEMY_SIZE
+		);
 	}
 	
 	private void spawnFlyEnemy() {
-		int rndHeight = ThreadLocalRandom.current().nextInt(25, 200);
+		int rndHeight = new Random().nextInt((int) (Player.MAX_JUMP_DISTANCE - PLAYER_SIZE/2));
 		enemy = new FlyEnemy(
-			SceneManager.getInstance().getCanvas().getWidth(),
-			TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound() - rndHeight,
-			50,
-			50
+			ENEMY_POS_X,
+			ENEMY_POS_Y - rndHeight,
+			ENEMY_SIZE,
+			ENEMY_SIZE
 		);
 	}
 	
@@ -121,7 +130,7 @@ public class EntityManager {
 		return entities;
 	}
 	public List<View> getEntityViews() {
-		entityViews = views;
+		List<View> entityViews = views;
 		entityViews.remove(scoreView);
 		return entityViews;
 	}

@@ -1,11 +1,16 @@
 package controller.manager;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
 import model.tile.GroundTile;
 import view.viewableobject.ViewableObjectView;
 
 public class TileManager {
+	
+	public static final double GROUNDTILE_POS_X = SceneManager.getInstance().getCanvas().getWidth()/2;
+	public static final double GROUNDTILE_POS_Y = SceneManager.getInstance().getCanvas().getHeight()*.9;
+	public static final double GROUNDTILE_WIDTH = SceneManager.getInstance().getCanvas().getWidth();
+	public static final double GROUNDTILE_HEIGHT = 100;
+	
 	
 	private GroundTile groundTile;
 	private ViewableObjectView groundTileView;
@@ -16,10 +21,8 @@ public class TileManager {
 		return tileManager;
 	}
 	
-	public void spawnTile() {
-		Canvas gameCanvas = SceneManager.getInstance().getCanvas();
-		
-		groundTile = new GroundTile(gameCanvas.getWidth()/2, gameCanvas.getHeight()*.9, gameCanvas.getWidth(), 100);
+	public void spawnGroundTile() {
+		groundTile = new GroundTile(GROUNDTILE_POS_X, GROUNDTILE_POS_Y, GROUNDTILE_WIDTH, GROUNDTILE_HEIGHT);
 		groundTileView = new ViewableObjectView(groundTile, Color.BROWN.darker());
 	}
 	

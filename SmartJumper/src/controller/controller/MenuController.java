@@ -5,8 +5,8 @@ import controller.manager.SceneManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import model.constants.Roots;
-import model.constants.Titles;
+import model.constants.Root;
+import model.constants.Title;
 
 public class MenuController {
 	
@@ -25,8 +25,8 @@ public class MenuController {
 	@FXML
 	private void playButtonAction() {
 		SceneManager sceneManager = SceneManager.getInstance();
-		sceneManager.getStage().setTitle(Titles.GAME);
-		sceneManager.setScene(Roots.GAME);
+		sceneManager.getStage().setTitle(Title.GAME);
+		sceneManager.setScene(Root.GAME);
 		GameManager gameManager = GameManager.getInstance();
 		gameManager.initialize();
 		gameManager.start();

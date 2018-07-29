@@ -26,34 +26,41 @@ public class GameStateManager {
 		return currentGameState;
 	}
 	
-	private boolean checkFalseGameState(GameState gameState) {
-		switch(gameState) {
+	private boolean checkFalseGameState(GameState currentGameState) {
+		boolean checkFailedState = false;
+		switch(currentGameState) {
 			case NEW:
-				return true;
+				checkFailedState = checkAllowedPrevGameState();
+				break;
 			case STARTING:
-				if(currentGameState != GameState.NEW) {
-					return true;
-				}
+				checkFailedState = checkAllowedPrevGameState(GameState.NEW);
 				break;
 			case RUNNING:
-				if(currentGameState == GameState.NEW) {
-					return true;
-				}
+				checkFailedState = checkAllowedPrevGameState(GameState.STARTING, GameState.PAUSING, GameState.STOPPING);
 				break;
 			case PAUSING:
-				if(currentGameState != GameState.RUNNING) {
-					return true;
-				}
+				checkFailedState = checkAllowedPrevGameState(GameState.RUNNING);
 				break;
 			case STOPPING:
-				if(currentGameState != GameState.RUNNING) {
-					return true;
-				}
+				checkFailedState = checkAllowedPrevGameState(GameState.RUNNING);
 				break;
 			default:
-				return true;
+				checkFailedState = checkAllowedPrevGameState();
+				break;
+		}
+	
+		return checkFailedState;
+	}
+	
+	private boolean checkAllowedPrevGameState(GameState... allowedPrevGameStates) {
+		boolean checkFailedState = true;
+		for(int i=0;i<allowedPrevGameStates.length;i++) {
+			if(currentGameState == allowedPrevGameStates[i]) {
+				checkFailedState = false;
+				break;
+			}
 		}
 		
-		return false;
+		return checkFailedState;
 	}
 }

@@ -1,23 +1,27 @@
 package model.collision;
 
+import controller.manager.CollisionBoundManager;
+
 public class CollisionBound {
 	
 	private Collidable collidableObject;
+	private CollisionBoundManager collisionBoundManager;
 	
 	public CollisionBound(Collidable collidableObject) {
 		this.collidableObject = collidableObject;
+		collisionBoundManager = CollisionBoundManager.getIntance();
 	}
 	
 	public double getTopBound() {
-		return collidableObject.getPos().getY()-(collidableObject.getBound().getHeight()/2);
+		return collisionBoundManager.calcTopBound(this.collidableObject);
 	}
 	public double getBottomBound() {
-		return collidableObject.getPos().getY()+(collidableObject.getBound().getHeight()/2);
+		return collisionBoundManager.calcBottomBound(this.collidableObject);
 	}
 	public double getLeftBound() {
-		return collidableObject.getPos().getX()-(collidableObject.getBound().getWidth()/2);
+		return collisionBoundManager.calcLeftBound(this.collidableObject);
 	}
 	public double getRightBound() {
-		return collidableObject.getPos().getX()+(collidableObject.getBound().getWidth()/2);
+		return collisionBoundManager.calcRightBound(this.collidableObject);
 	}
 }

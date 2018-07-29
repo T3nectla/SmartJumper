@@ -4,12 +4,15 @@ import controller.event.bus.SmartJumperEventBus;
 import javafx.geometry.Point2D;
 import model.bound.Bound;
 import model.collision.CollisionBound;
-import model.constants.Constants;
 import model.event.entityevent.movementevent.MovementEvent;
 import model.move.Movable;
 
 public abstract class Entity implements Movable {
 
+	public static final int GRAVITY_X = 0;
+	public static final int GRAVITY_Y = 3;
+	
+	
 	private Point2D pos;
 	private Point2D vel;
 	private Point2D grav;
@@ -22,7 +25,7 @@ public abstract class Entity implements Movable {
 	public Entity(double posX, double posY, double boundX, double boundY) {
 		pos = new Point2D(posX, posY);
 		vel = new Point2D(0, 0);
-		grav = new Point2D(0, Constants.GRAVITY);
+		grav = new Point2D(GRAVITY_X, GRAVITY_Y);
 		bound = new Bound(boundX, boundY);
 		collisionBound = new CollisionBound(this);
 		onGround = false;

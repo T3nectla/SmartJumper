@@ -4,7 +4,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.Canvas;
 import javafx.util.Duration;
-import model.constants.Constants;
 import model.constants.GameState;
 import model.entity.Entity;
 import model.view.View;
@@ -13,6 +12,13 @@ import view.stateview.StateTextView;
 
 public class GameManager {
 
+	public static final double FPS = 1000d/60d;
+	public static final int CLEAR_POS_X = 0;
+	public static final int CLEAR_POS_Y = 0;
+	public static final double CLEAR_WIDTH = SceneManager.getInstance().getCanvas().getWidth();
+	public static final double CLEAR_HEIGHT = SceneManager.getInstance().getCanvas().getHeight();
+	
+	
 	private Timeline gameTimeline;
 	private Canvas gameCanvas;
 	
@@ -32,7 +38,7 @@ public class GameManager {
 		GameStateManager.getInstance().initialize();
 		
 		if(gameTimeline == null) {
-			gameTimeline = new Timeline(new KeyFrame(Duration.millis(Constants.FPS), e-> draw()));
+			gameTimeline = new Timeline(new KeyFrame(Duration.millis(FPS), e-> draw()));
 			gameTimeline.setCycleCount(Timeline.INDEFINITE);
 		}
 		
@@ -44,7 +50,7 @@ public class GameManager {
 		viewManager.clear();
 		
 		TileManager tileManager = TileManager.getInstance();
-		tileManager.spawnTile();
+		tileManager.spawnGroundTile();
 		
 		EntityManager entityManager = EntityManager.getInstance();
 		entityManager.spawnPlayer();
@@ -85,7 +91,7 @@ public class GameManager {
 	}
 	
 	private void draw() {
-		gameCanvas.getGraphicsContext2D().clearRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
+		gameCanvas.getGraphicsContext2D().clearRect(CLEAR_POS_X, CLEAR_POS_Y, CLEAR_WIDTH, CLEAR_HEIGHT);
 		
 		for(Entity entity : EntityManager.getInstance().getEntities()) {
 			entity.grav();

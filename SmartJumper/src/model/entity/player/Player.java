@@ -2,10 +2,14 @@ package model.entity.player;
 
 import controller.manager.TileManager;
 import javafx.geometry.Point2D;
-import model.constants.Constants;
 import model.entity.Entity;
 
 public class Player extends Entity {
+	
+	public static final int JUMP_X = 0;
+	public static final int JUMP_Y = -4;
+	public static final double MAX_JUMP_DISTANCE = 200d;
+	
 	
 	private long score;
 	private Point2D groundPos;
@@ -14,7 +18,7 @@ public class Player extends Entity {
 		super(posX, posY, boundX, boundY);
 		groundPos = new Point2D(0, TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound());
 		score = 0;
-		setVel(0, Constants.JUMP);
+		setVel(JUMP_X, JUMP_Y);
 	}
 	
 	@Override
@@ -22,7 +26,7 @@ public class Player extends Entity {
 		if(isJumpPressed()) {
 			setPos(getPos().add(getVel()));
 			
-			if(groundPos.distance(getPos()) >= Constants.MAX_JUMP_DISTANCE) {
+			if(groundPos.distance(getPos()) >= MAX_JUMP_DISTANCE) {
 				cancelJump();
 			}	
 			return;

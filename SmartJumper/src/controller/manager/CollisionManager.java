@@ -5,6 +5,8 @@ import model.move.Movable;
 
 public class CollisionManager {
 	
+	public static final int LEFT_MAP_BOUND = 0;
+	
 	private static final CollisionManager collisionManager = new CollisionManager();
 	private CollisionManager() {}
 	public static CollisionManager getInstance() {
@@ -24,6 +26,6 @@ public class CollisionManager {
 	}
 	
 	public boolean checkOutOfBounds(Movable movableObject) {
-		return movableObject.getCollisionBound().getRightBound() < 0;
+		return movableObject.getCollisionBound().getRightBound() < LEFT_MAP_BOUND;
 	}
 }

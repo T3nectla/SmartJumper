@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import model.constants.ErrorMsg;
 
 public class FXLoader {
 	
@@ -21,7 +22,7 @@ public class FXLoader {
 		try {
 			loadedRoot = FXMLLoader.load(FXLoader.class.getResource(url));
 		} catch (NullPointerException | IOException ex) {
-			Logger.getAnonymousLogger().severe("Root could not be loaded! Message:\n" + ex.getMessage());
+			Logger.getAnonymousLogger().severe(ErrorMsg.ROOT_NOT_LOADED + ex.getMessage());
 			Platform.exit();
 		}
 		

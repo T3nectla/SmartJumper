@@ -2,13 +2,16 @@ package model.entity.enemy;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import model.constants.Constants;
-
 public class GroundEnemy extends Enemy {
+	
+	public static final int MIN_SPEED_X = 2;
+	public static final int MAX_SPEED_X = 10;
+	public static final int SPEED_Y = 0;
+	
 	
 	public GroundEnemy(double posX, double posY, double boundX, double boundY) {
 		super(posX, posY, boundX, boundY);
-		setVel(-ThreadLocalRandom.current().nextInt(Constants.GROUNDENEMY_MIN_SPEED, Constants.GROUNDENEMY_MAX_SPEED), 0);
+		setVel(-ThreadLocalRandom.current().nextInt(MIN_SPEED_X, MAX_SPEED_X), SPEED_Y);
 		calcScore();
 	}
 	

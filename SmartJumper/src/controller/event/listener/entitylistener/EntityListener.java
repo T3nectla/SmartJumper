@@ -21,13 +21,14 @@ import model.tile.GroundTile;
 
 public class EntityListener {
 	
+	public static final int DISTANCE_BETWEEN_GROUND_AND_ENTITY = 0;
+	
 	@Subscribe
 	private void onMove(MovementEvent e) {
 		List<Collidable> collidableObjects = new ArrayList<>();
 		collidableObjects.clear();
 		collidableObjects.addAll(EntityManager.getInstance().getEntities());
 		collidableObjects.add(TileManager.getInstance().getGroundTile());
-		
 		for(Collidable collidableObject : collidableObjects) {
 			CollisionManager collisionManager = CollisionManager.getInstance();
 			if(collisionManager.checkCollision(e.getEntity(), collidableObject)) {
@@ -45,7 +46,7 @@ public class EntityListener {
 		if(!(e.getCollidableObject() instanceof GroundTile)) {
 			return;
 		}
-		if(e.getCollidableObject().getCollisionBound().getTopBound() - e.getEntity().getCollisionBound().getBottomBound() <= 0) {
+		if(e.getCollidableObject().getCollisionBound().getTopBound() - e.getEntity().getCollisionBound().getBottomBound() <= DISTANCE_BETWEEN_GROUND_AND_ENTITY) {
 			e.getEntity().setGravityActive(false);
 			e.getEntity().setOnGround(true);
 			e.getEntity().setPos(
