@@ -5,7 +5,7 @@ import model.move.Movable;
 
 public class CollisionManager {
 	
-	public static final int LEFT_MAP_BOUND = 0;
+	public static final double LEFT_MAP_BOUND = 0;
 	
 	private static final CollisionManager collisionManager = new CollisionManager();
 	private CollisionManager() {}

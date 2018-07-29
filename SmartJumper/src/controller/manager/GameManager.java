@@ -1,4 +1,4 @@
-package controller.manager;
+ package controller.manager;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -13,10 +13,6 @@ import view.stateview.StateTextView;
 public class GameManager {
 
 	public static final double FPS = 1000d/60d;
-	public static final int CLEAR_POS_X = 0;
-	public static final int CLEAR_POS_Y = 0;
-	public static final double CLEAR_WIDTH = SceneManager.getInstance().getCanvas().getWidth();
-	public static final double CLEAR_HEIGHT = SceneManager.getInstance().getCanvas().getHeight();
 	
 	
 	private Timeline gameTimeline;
@@ -91,7 +87,7 @@ public class GameManager {
 	}
 	
 	private void draw() {
-		gameCanvas.getGraphicsContext2D().clearRect(CLEAR_POS_X, CLEAR_POS_Y, CLEAR_WIDTH, CLEAR_HEIGHT);
+		gameCanvas.getGraphicsContext2D().clearRect(0, 0, gameCanvas.getWidth(), gameCanvas.getHeight());
 		
 		for(Entity entity : EntityManager.getInstance().getEntities()) {
 			entity.grav();

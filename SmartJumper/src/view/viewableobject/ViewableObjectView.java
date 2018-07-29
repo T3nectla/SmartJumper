@@ -18,8 +18,8 @@ public class ViewableObjectView extends View {
 	public void show() {
 		getGC().setFill(color);
 		getGC().fillRect(
-			viewableObject.getPos().getX()-(viewableObject.getBound().getWidth()/2),
-			viewableObject.getPos().getY()-(viewableObject.getBound().getHeight()/2),
+			viewableObject.getPos().getX()-(viewableObject.getBound().getWidth()/2d),
+			viewableObject.getPos().getY()-(viewableObject.getBound().getHeight()/2d),
 			viewableObject.getBound().getWidth(),
 			viewableObject.getBound().getHeight()
 		);

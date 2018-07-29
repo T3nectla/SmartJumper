@@ -9,8 +9,8 @@ import model.move.Movable;
 
 public abstract class Entity implements Movable {
 
-	public static final int GRAVITY_X = 0;
-	public static final int GRAVITY_Y = 3;
+	public static final double GRAVITY_X = 0;
+	public static final double GRAVITY_Y = 3;
 	
 	
 	private Point2D pos;

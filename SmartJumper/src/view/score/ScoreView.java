@@ -9,10 +9,10 @@ import model.view.View;
 
 public class ScoreView extends View {
 
-	public static final int POS_X = 5;
-	public static final int POS_X_PLUS = POS_X + 5;
-	public static final int POS_Y = 25;
-	public static final int WIDTH = 50;
+	public static final double POS_X = 5;
+	public static final double POS_X_PLUS = POS_X + 5;
+	public static final double POS_Y = 25;
+	public static final double WIDTH = 50;
 	
 	public static final TextAlignment TEXTALIGNMENT = TextAlignment.LEFT; 
 	public static final VPos VPOS = VPos.CENTER;

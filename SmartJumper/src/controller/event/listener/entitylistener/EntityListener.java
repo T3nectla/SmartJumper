@@ -21,7 +21,7 @@ import model.tile.GroundTile;
 
 public class EntityListener {
 	
-	public static final int DISTANCE_BETWEEN_GROUND_AND_ENTITY = 0;
+	public static final double DISTANCE_BETWEEN_GROUND_AND_ENTITY = 0;
 	
 	@Subscribe
 	private void onMove(MovementEvent e) {

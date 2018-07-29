@@ -28,8 +28,8 @@ public class StateTextView extends View {
 		getGC().setFont(FONT);
 		getGC().fillText(
 			stateStr,
-			getGC().getCanvas().getWidth()/2,
-			getGC().getCanvas().getHeight()/2
+			getGC().getCanvas().getWidth()/2d,
+			getGC().getCanvas().getHeight()/2d
 		);
 	}
 }

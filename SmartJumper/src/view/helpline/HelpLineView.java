@@ -6,7 +6,7 @@ import model.view.View;
 
 public class HelpLineView extends View {
 	
-	public static final int POS_X_START = 0;
+	public static final double POS_X_START = 0;
 	public static final Color COLOR = Color.GREEN;
 	
 	
