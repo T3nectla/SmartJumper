@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.controller.InstallationController">
+   <center>
+      <StackPane BorderPane.alignment="CENTER">
+	   <children>
+	      <VBox alignment="CENTER" fillWidth="false" spacing="5.0">
+	         <children>
+	            <Label text="Current path:" />
+	            <TextField fx:id="currentPathTextField" editable="false" focusTraversable="false" prefHeight="31.0" prefWidth="440.0" />
+	            <Button fx:id="choosePathButton" mnemonicParsing="false" onAction="#choosePathButtonAction" text="Choose path" />
+	         </children>
+	      </VBox>
+	   </children>
+	</StackPane>
+   </center>
+   <bottom>
+      <StackPane alignment="BOTTOM_RIGHT" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="Continue" />
+         </children>
+      </StackPane>
+   </bottom>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</BorderPane>
