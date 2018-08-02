@@ -1,10 +1,12 @@
 package controller.manager;
 
 import model.constants.GameState;
+import view.stateview.GameStateTextView;
 
 public class GameStateManager {
 
 	private GameState currentGameState;
+	private GameStateTextView gameStateTextView;
 	
 	private static final GameStateManager gameStateManager = new GameStateManager();
 	private GameStateManager() {}
@@ -14,6 +16,7 @@ public class GameStateManager {
 	
 	public void initialize() {
 		currentGameState = GameState.NEW;
+		gameStateTextView = new GameStateTextView("");
 	}
 	
 	public void setCurrentGameState(GameState gameState) {
@@ -24,6 +27,16 @@ public class GameStateManager {
 	}
 	public GameState getCurrentGameState() {
 		return currentGameState;
+	}
+	
+	public void setGameStateTextView(GameStateTextView gameStateTextView) {
+		this.gameStateTextView = gameStateTextView;
+	}
+	public void setGameStateTextView(String gameStateStr) {
+		gameStateTextView.setGameStateStr(gameStateStr);
+	}
+	public GameStateTextView getGameStateTextView() {
+		return gameStateTextView;
 	}
 	
 	private boolean checkFalseGameState(GameState currentGameState) {

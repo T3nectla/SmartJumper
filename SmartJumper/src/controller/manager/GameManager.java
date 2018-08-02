@@ -8,7 +8,6 @@ import model.constants.GameState;
 import model.entity.Entity;
 import model.view.View;
 import view.helpline.HelpLineView;
-import view.stateview.StateTextView;
 
 public class GameManager {
 
@@ -56,34 +55,38 @@ public class GameManager {
 		viewManager.addView(entityManager.getScoreView());
 		viewManager.addView(tileManager.getGroundTileView());
 		viewManager.addView(new HelpLineView(entityManager.getPlayer()));
+		viewManager.addView(GameStateManager.getInstance().getGameStateTextView());
 		
 		play();
 	}
 	
 	public void nextEnemy() {
 		EntityManager entityManager = EntityManager.getInstance();
-		ViewManager viewManager = ViewManager.getInstance();
-		viewManager.removeView(entityManager.getEnemyView());
 		entityManager.spawnEnemy();
-		viewManager.addView(entityManager.getEnemyView());
+		ViewManager.getInstance().updateView(entityManager.getEnemyView());
 	}
 
 	
 	public void play() {
+		GameStateManager gameStateManager = GameStateManager.getInstance();
+		gameStateManager.setCurrentGameState(GameState.RUNNING);
+		gameStateManager.setGameStateTextView("");
 		gameTimeline.play();
-		GameStateManager.getInstance().setCurrentGameState(GameState.RUNNING);
 	}
 	
 	
 	public void pause() {
-		gameTimeline.pause();
-		new StateTextView("Press P to unpause the game").show();
-		GameStateManager.getInstance().setCurrentGameState(GameState.PAUSING);
+		GameStateManager gameStateManager = GameStateManager.getInstance();
+		gameStateManager.setCurrentGameState(GameState.PAUSING);
+		gameStateManager.setGameStateTextView("Press P to unpause the game");
+		ViewManager.getInstance().updateView(gameStateManager.getGameStateTextView());
 	}
 	
 	public void stop() {	
-		gameTimeline.stop();
-		GameStateManager.getInstance().setCurrentGameState(GameState.STOPPING);
+		GameStateManager gameStateManager = GameStateManager.getInstance();
+		gameStateManager.setCurrentGameState(GameState.STOPPING);
+		gameStateManager.setGameStateTextView("GAME OVER\nPress N to start a new game");
+		ViewManager.getInstance().updateView(gameStateManager.getGameStateTextView());
 	}
 	
 	private void draw() {
@@ -98,15 +101,27 @@ public class GameManager {
 			view.show();
 		}
 		
+		doGameState();
+	}
+	
+	private void doGameState() {
 		GameStateManager gameStateManager = GameStateManager.getInstance();
-		if(gameStateManager.getCurrentGameState() == GameState.STOPPING) {
-			 new StateTextView("GAME OVER\nPress N to start a new game").show();
-		}
-		
-		gameStateManager.setCurrentGameState(GameState.STARTING);
-		if(gameStateManager.getCurrentGameState() == GameState.STARTING) {
-			play();
-			pause();
+		switch(gameStateManager.getCurrentGameState()) {
+			case NEW:
+				gameStateManager.setCurrentGameState(GameState.STARTING);
+				break;
+			case PAUSING:
+				gameTimeline.pause();
+				break;
+			case STARTING:
+				play();
+				pause();
+				break;
+			case STOPPING:
+				gameTimeline.stop();
+				break;
+			default:
+				break;
 		}
 	}
 }

@@ -29,6 +29,11 @@ public class ViewManager {
 		this.views.removeAll(views);
 	}
 	
+	public void updateView(View view) {
+		views.remove(view);
+		views.add(view);
+	}
+	
 	public void clear() {
 		views.clear();
 	}

@@ -7,7 +7,7 @@ import model.entity.Entity;
 public class Player extends Entity {
 	
 	public static final double JUMP_X = 0;
-	public static final double JUMP_Y = -4;
+	public static final double JUMP_Y = -5;
 	public static final double MAX_JUMP_DISTANCE = 200d;
 	
 	

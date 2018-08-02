@@ -30,23 +30,25 @@ public class GameController {
 			return;
 		}
 		
+		GameStateManager gameStateManager = GameStateManager.getInstance();
 		switch(e.getCode()) {
 			case SPACE:
 				EntityManager.getInstance().getPlayer().jump();
 				break;
 			case P:
 				keyPressed = true;
-				if (GameStateManager.getInstance().getCurrentGameState() == GameState.RUNNING) {
+
+				if (gameStateManager.getCurrentGameState() == GameState.RUNNING) {
 					GameManager.getInstance().pause();
 					return;
 				}
 				
-				if (GameStateManager.getInstance().getCurrentGameState() == GameState.PAUSING) {
+				if (gameStateManager.getCurrentGameState() == GameState.PAUSING) {
 					GameManager.getInstance().play();
 				}
 				break;
 			case N:
-				if(GameStateManager.getInstance().getCurrentGameState() == GameState.STOPPING) {
+				if(gameStateManager.getCurrentGameState() == GameState.STOPPING) {
 					GameManager.getInstance().start();
 				}
 				break;

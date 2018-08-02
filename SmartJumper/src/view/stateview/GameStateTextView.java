@@ -6,7 +6,7 @@ import javafx.scene.text.TextAlignment;
 import model.constants.Font;
 import model.view.View;
 
-public class StateTextView extends View {
+public class GameStateTextView extends View {
 	
 	public static final TextAlignment TEXTALIGNMENT = TextAlignment.CENTER; 
 	public static final VPos VPOS = VPos.CENTER;
@@ -14,10 +14,14 @@ public class StateTextView extends View {
 	public static final javafx.scene.text.Font FONT = Font.MEDIUM;
 	
 	
-	private String stateStr;
+	private String gameStateStr;
 	
-	public StateTextView(String stateStr) {
-		this.stateStr = stateStr;
+	public GameStateTextView(String gameStateStr) {
+		this.gameStateStr = gameStateStr;
+	}
+	
+	public void setGameStateStr(String gameStateStr) {
+		this.gameStateStr = gameStateStr;
 	}
 	
 	@Override
@@ -27,7 +31,7 @@ public class StateTextView extends View {
 		getGC().setFill(COLOR);
 		getGC().setFont(FONT);
 		getGC().fillText(
-			stateStr,
+			gameStateStr,
 			getGC().getCanvas().getWidth()/2d,
 			getGC().getCanvas().getHeight()/2d
 		);
