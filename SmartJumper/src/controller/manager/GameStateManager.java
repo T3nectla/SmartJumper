@@ -1,7 +1,7 @@
 package controller.manager;
 
 import model.constants.GameState;
-import view.stateview.GameStateTextView;
+import view.gamestate.GameStateTextView;
 
 public class GameStateManager {
 
@@ -20,7 +20,7 @@ public class GameStateManager {
 	}
 	
 	public void setCurrentGameState(GameState gameState) {
-		if(checkFalseGameState(gameState)) {
+		if(checkFalseGameState(gameState) || this.currentGameState == gameState) {
 			return;
 		}
 		currentGameState = gameState;
@@ -67,8 +67,8 @@ public class GameStateManager {
 	
 	private boolean checkAllowedPrevGameState(GameState... allowedPrevGameStates) {
 		boolean checkFailedState = true;
-		for(int i=0;i<allowedPrevGameStates.length;i++) {
-			if(currentGameState == allowedPrevGameStates[i]) {
+		for(GameState allowedPrevGameState : allowedPrevGameStates) {
+			if(currentGameState == allowedPrevGameState) {
 				checkFailedState = false;
 				break;
 			}

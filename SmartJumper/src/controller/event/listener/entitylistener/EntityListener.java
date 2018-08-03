@@ -26,7 +26,6 @@ public class EntityListener {
 	@Subscribe
 	private void onMove(MovementEvent e) {
 		List<Collidable> collidableObjects = new ArrayList<>();
-		collidableObjects.clear();
 		collidableObjects.addAll(EntityManager.getInstance().getEntities());
 		collidableObjects.add(TileManager.getInstance().getGroundTile());
 		for(Collidable collidableObject : collidableObjects) {

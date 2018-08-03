@@ -1,4 +1,4 @@
-package view.stateview;
+package view.gamestate;
 
 import javafx.geometry.VPos;
 import javafx.scene.paint.Color;

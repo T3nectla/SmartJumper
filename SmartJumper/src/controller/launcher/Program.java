@@ -1,6 +1,6 @@
 package controller.launcher;
 
-import controller.manager.SceneManager;
+import controller.manager.SmartJumperManager;
 import javafx.stage.Stage;
 import model.constants.Root;
 import model.constants.Title;
@@ -18,14 +18,14 @@ public class Program {
 	}
 	
 	public void start(Stage primaryStage) {
-		SceneManager sceneManager = SceneManager.getInstance();
-		sceneManager.initialize(Root.MENU);
-		primaryStage.setScene(sceneManager.getScene());
+		SmartJumperManager smartJumperManager = SmartJumperManager.getInstance();
+		smartJumperManager.initialize(Root.MENU);
+		primaryStage.setScene(smartJumperManager.getScene());
 		primaryStage.setTitle(Title.MENU);
 		primaryStage.setResizable(false);
 		primaryStage.show();
 		
-		sceneManager.setStage(primaryStage);
+		smartJumperManager.setStage(primaryStage);
 	}
 	
 	public void stop() {

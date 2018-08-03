@@ -1,7 +1,7 @@
 package controller.controller;
 
 import controller.manager.GameManager;
-import controller.manager.SceneManager;
+import controller.manager.SmartJumperManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,7 +24,7 @@ public class MenuController {
 	
 	@FXML
 	private void playButtonAction() {
-		SceneManager sceneManager = SceneManager.getInstance();
+		SmartJumperManager sceneManager = SmartJumperManager.getInstance();
 		sceneManager.getStage().setTitle(Title.GAME);
 		sceneManager.setScene(Root.GAME);
 		GameManager gameManager = GameManager.getInstance();

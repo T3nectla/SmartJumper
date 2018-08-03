@@ -5,16 +5,16 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.stage.Stage;
 
-public class SceneManager {
+public class SmartJumperManager {
 
 	private Scene scene;
 	private Stage stage;
 	private Canvas canvas;
 	
-	private static final SceneManager sceneManager = new SceneManager();
-	private SceneManager() {}
-	public static SceneManager getInstance() {
-		return sceneManager;
+	private static final SmartJumperManager smartJumperManager = new SmartJumperManager();
+	private SmartJumperManager() {}
+	public static SmartJumperManager getInstance() {
+		return smartJumperManager;
 	}
 	
 	public void initialize(Parent root) {

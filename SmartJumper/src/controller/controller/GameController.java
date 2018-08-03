@@ -3,7 +3,7 @@ package controller.controller;
 import controller.manager.EntityManager;
 import controller.manager.GameManager;
 import controller.manager.GameStateManager;
-import controller.manager.SceneManager;
+import controller.manager.SmartJumperManager;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyEvent;
@@ -21,7 +21,7 @@ public class GameController {
 	
 	@FXML
 	private void initialize() {
-		SceneManager.getInstance().setCanvas(gameCanvas);
+		SmartJumperManager.getInstance().setCanvas(gameCanvas);
 	}
 	
 	@FXML

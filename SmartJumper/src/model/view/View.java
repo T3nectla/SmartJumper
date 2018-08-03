@@ -1,6 +1,6 @@
 package model.view;
 
-import controller.manager.SceneManager;
+import controller.manager.SmartJumperManager;
 import javafx.scene.canvas.GraphicsContext;
 
 public abstract class View {
@@ -8,7 +8,7 @@ public abstract class View {
 	private GraphicsContext gc;
 	
 	public View() {
-		gc = SceneManager.getInstance().getCanvas().getGraphicsContext2D();
+		gc = SmartJumperManager.getInstance().getCanvas().getGraphicsContext2D();
 	}
 	
 	public abstract void show();

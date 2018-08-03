@@ -6,9 +6,9 @@ import view.viewableobject.ViewableObjectView;
 
 public class TileManager {
 	
-	public static final double GROUNDTILE_POS_X = SceneManager.getInstance().getCanvas().getWidth()/2;
-	public static final double GROUNDTILE_POS_Y = SceneManager.getInstance().getCanvas().getHeight()*.9;
-	public static final double GROUNDTILE_WIDTH = SceneManager.getInstance().getCanvas().getWidth();
+	public static final double GROUNDTILE_POS_X = SmartJumperManager.getInstance().getCanvas().getWidth()/2;
+	public static final double GROUNDTILE_POS_Y = SmartJumperManager.getInstance().getCanvas().getHeight()*.9;
+	public static final double GROUNDTILE_WIDTH = SmartJumperManager.getInstance().getCanvas().getWidth();
 	public static final double GROUNDTILE_HEIGHT = 100;
 	
 	

@@ -23,7 +23,7 @@ public class EntityManager {
 	public static final Color PLAYER_COLOR = Color.BLACK;
 	
 	public static final double ENEMY_SIZE = 50d;
-	public static final double ENEMY_POS_X = SceneManager.getInstance().getCanvas().getWidth();
+	public static final double ENEMY_POS_X = SmartJumperManager.getInstance().getCanvas().getWidth();
 	public static final double ENEMY_POS_Y = TileManager.getInstance().getGroundTile().getCollisionBound().getTopBound()-ENEMY_SIZE/2;
 	public static final Color ENEMY_COLOR = Color.RED;
 	

@@ -24,7 +24,7 @@ public class GameManager {
 	}
 	
 	public void initialize() {
-		SceneManager sceneManager = SceneManager.getInstance();
+		SmartJumperManager sceneManager = SmartJumperManager.getInstance();
 		gameCanvas = sceneManager.getCanvas();
 		gameCanvas.setWidth(sceneManager.getScene().getWidth());
 		gameCanvas.setHeight(sceneManager.getScene().getHeight());

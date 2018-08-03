@@ -2,7 +2,7 @@ package controller.controller;
 
 import java.io.File;
 
-import controller.manager.SceneManager;
+import controller.manager.SmartJumperManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -26,7 +26,7 @@ public class InstallationController {
 			DirectoryChooser directoryChooser = new DirectoryChooser();
 			directoryChooser.setTitle("Choose a file directory to save the data.");
 			directoryChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-			File dir = directoryChooser.showDialog(SceneManager.getInstance().getStage());
+			File dir = directoryChooser.showDialog(SmartJumperManager.getInstance().getStage());
 			try {
 				currentPathTextField.setText(dir.getPath());
 			}catch(NullPointerException ex) {
