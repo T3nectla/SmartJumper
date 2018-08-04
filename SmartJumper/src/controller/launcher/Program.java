@@ -19,7 +19,7 @@ public class Program {
 	
 	public void start(Stage primaryStage) {
 		SmartJumperManager smartJumperManager = SmartJumperManager.getInstance();
-		smartJumperManager.initialize(Root.MENU);
+		smartJumperManager.initialize(Root.INSTALLATION);
 		primaryStage.setScene(smartJumperManager.getScene());
 		primaryStage.setTitle(Title.MENU);
 		primaryStage.setResizable(false);

@@ -24,11 +24,11 @@ public class GameManager {
 	}
 	
 	public void initialize() {
-		SmartJumperManager sceneManager = SmartJumperManager.getInstance();
-		gameCanvas = sceneManager.getCanvas();
-		gameCanvas.setWidth(sceneManager.getScene().getWidth());
-		gameCanvas.setHeight(sceneManager.getScene().getHeight());
-		sceneManager.setCanvas(gameCanvas);
+		SmartJumperManager smartJumperManager = SmartJumperManager.getInstance();
+		gameCanvas = smartJumperManager.getCanvas();
+		gameCanvas.setWidth(smartJumperManager.getScene().getWidth());
+		gameCanvas.setHeight(smartJumperManager.getScene().getHeight());
+		smartJumperManager.setCanvas(gameCanvas);
 		
 		GameStateManager.getInstance().initialize();
 		
@@ -37,7 +37,7 @@ public class GameManager {
 			gameTimeline.setCycleCount(Timeline.INDEFINITE);
 		}
 		
-		sceneManager.getScene().getRoot().requestFocus();
+		smartJumperManager.getScene().getRoot().requestFocus();
 	}
 	
 	public void start() {
@@ -55,8 +55,13 @@ public class GameManager {
 		viewManager.addView(entityManager.getScoreView());
 		viewManager.addView(tileManager.getGroundTileView());
 		viewManager.addView(new HelpLineView(entityManager.getPlayer()));
-		viewManager.addView(GameStateManager.getInstance().getGameStateTextView());
+		GameStateManager gameStateManager = GameStateManager.getInstance();
+		viewManager.addView(gameStateManager.getGameStateTextView());
 		
+		if(gameStateManager.getCurrentGameState() == GameState.NEW) {
+			gameTimeline.play();
+			return;
+		}
 		play();
 	}
 	
@@ -108,14 +113,11 @@ public class GameManager {
 		GameStateManager gameStateManager = GameStateManager.getInstance();
 		switch(gameStateManager.getCurrentGameState()) {
 			case NEW:
-				gameStateManager.setCurrentGameState(GameState.STARTING);
+				play();
+				pause();
 				break;
 			case PAUSING:
 				gameTimeline.pause();
-				break;
-			case STARTING:
-				play();
-				pause();
 				break;
 			case STOPPING:
 				gameTimeline.stop();

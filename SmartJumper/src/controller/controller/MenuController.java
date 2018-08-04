@@ -24,9 +24,9 @@ public class MenuController {
 	
 	@FXML
 	private void playButtonAction() {
-		SmartJumperManager sceneManager = SmartJumperManager.getInstance();
-		sceneManager.getStage().setTitle(Title.GAME);
-		sceneManager.setScene(Root.GAME);
+		SmartJumperManager smartJumperManager = SmartJumperManager.getInstance();
+		smartJumperManager.getStage().setTitle(Title.GAME);
+		smartJumperManager.setScene(Root.GAME);
 		GameManager gameManager = GameManager.getInstance();
 		gameManager.initialize();
 		gameManager.start();

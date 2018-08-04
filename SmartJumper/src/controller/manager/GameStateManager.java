@@ -20,8 +20,11 @@ public class GameStateManager {
 	}
 	
 	public void setCurrentGameState(GameState gameState) {
-		if(checkFalseGameState(gameState) || this.currentGameState == gameState) {
+		if(this.currentGameState == gameState) {
 			return;
+		}
+		if(checkFalseGameState(gameState)) {
+			throw new IllegalStateException();
 		}
 		currentGameState = gameState;
 	}
@@ -45,11 +48,8 @@ public class GameStateManager {
 			case NEW:
 				checkFailedState = checkAllowedPrevGameState();
 				break;
-			case STARTING:
-				checkFailedState = checkAllowedPrevGameState(GameState.NEW);
-				break;
 			case RUNNING:
-				checkFailedState = checkAllowedPrevGameState(GameState.STARTING, GameState.PAUSING, GameState.STOPPING);
+				checkFailedState = checkAllowedPrevGameState(GameState.NEW, GameState.PAUSING, GameState.STOPPING);
 				break;
 			case PAUSING:
 				checkFailedState = checkAllowedPrevGameState(GameState.RUNNING);
